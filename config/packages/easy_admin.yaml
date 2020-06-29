@@ -1,0 +1,36 @@
+easy_admin:
+    site_name: Administrador
+    design:
+        menu:
+          - { route: 'easyadmin', label: 'Inicio', icon: 'home' }
+          - { entity: 'Cliente', label: 'Clientes', icon: 'user-friends' }
+          - { entity: 'Factura', label: 'Facturas', icon: 'sticky-note' }
+          - { entity: 'Plan', label: 'Planes', icon: 'atlas' }
+          - { entity: 'Notificacion', label: 'Notificaciones', icon: 'atlas' }
+          - { entity: 'Pagos', label: 'Pagos', icon: 'atlas' }
+    formats:
+        date:   'd/m/Y'
+    entities:
+        # List the entity class name you want to manage
+        Cliente:
+          class: App\Entity\Cliente
+          list:
+            fields: ['id', 'nombre', 'direccion', 'dni','celular', { property: 'mail', type: 'email' }, plan]
+          new:
+            fields: ['nombre', 'apellido', 'direccion', 'dni','celular', { property: 'mail', type: 'email' }, plan]
+        Factura:
+          class: App\Entity\Factura
+          list:
+            fields: ['id','cliente','fecha_generada','fecha_vencimiento','valor','pagada','fecha_de_pago','external_reference']
+        Plan:
+          class: App\Entity\Plan
+          new:
+            fields: ['descripcion','valor']
+        Notificacion:
+          class: App\Entity\Notificacion
+          list:
+            fields: ['id', 'nid', 'topic', 'time']
+        Pagos:
+          class: App\Entity\Pagos
+          list: 
+            fields: ['collection_id', 'collection_status', 'external_reference', 'payment_type', 'preference_id']
