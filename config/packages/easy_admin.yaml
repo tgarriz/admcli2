@@ -29,7 +29,7 @@ easy_admin:
         Notificacion:
           class: App\Entity\Notificacion
           list:
-            fields: ['id', 'nid', 'topic', 'time']
+            fields: ['id', 'nid', 'topic', 'time', 'external_reference']
         Pagos:
           class: App\Entity\Pagos
           list: 
